@@ -1,0 +1,24 @@
+import Persona.Persona
+import suenios.Recibirse.Recibirse
+import suenios.VisitarLugar.VisitarLugar
+import clasificaciones.Obsesivo.obsesivo
+
+describe "integrador" {
+	const recibirseDeIng = new Recibirse(300, true, "Ingenieria en Sistemas de Informacion")
+	const viajarABrasil = new VisitarLugar(250, true, "Brasil")
+	const sueniosDePedro = [recibirseDeIng, viajarABrasil]
+	
+	const pedro = new Persona(0, sueniosDePedro, 3, "Ingenieria en Sistemas de Informacion", "Miami", 45000, [],"Estudiante", obsesivo) 
+	
+	fixture {
+		pedro.cumplirUnSuenio(recibirseDeIng)
+	}
+	
+	test "Puede recibirse de Ing. en sistemas" {
+		assert.that(!recibirseDeIng.pendiente())
+	}
+	
+	test "ahora su carrera es Ing. en sistemas" {
+		assert.equals(pedro.carreraActual(), "Ingenieria en Sistemas de Informacion")
+	}
+}

@@ -1,0 +1,2 @@
+
+class NoSePuedeCumplirException inherits Exception { }
